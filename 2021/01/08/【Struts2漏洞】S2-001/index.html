@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>【Struts2漏洞】S2-001 | PonusJang&#39;Notes</title>
-  <meta name="keywords" content=" Java Struts2 ">
+  <meta name="keywords" content=" Java , Struts2 ">
   <meta name="description" content="【Struts2漏洞】S2-001 | PonusJang&#39;Notes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
@@ -112,7 +112,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="All">All<small>(2)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(2)</small></div></li>
     
         
             
@@ -138,7 +138,7 @@
     
     
     </div>
-    <div><a class="about  site_url"  href="/about">About</a></div>
+    <div><a class="about  site_url"  href="/about">关于</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="2">
 
@@ -151,7 +151,7 @@
     <div class="nav-right">
         <div class="friends-area">
     <div class="friends-title">
-        Links
+        友情链接
         <i class="iconfont icon-left"></i>
     </div>
     <div class="friends-content">
@@ -166,7 +166,7 @@
     <div class="right-top">
         <div id="default-panel">
             <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
-            <div class="right-title">All</div>
+            <div class="right-title">全部文章</div>
             <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
         </div>
         <div id="search-panel">
@@ -187,11 +187,15 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>Java Struts2</a>
+                <i class="iconfont icon-tag"></i><a>Java</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>OGNL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Struts2</a>
             </li>
         
     </div>
@@ -205,15 +209,15 @@
     
     <nav id="title-list-nav">
         
-        <a  class="All Vulnerability "
+        <a  class="全部文章 Vulnerability "
            href="/2021/01/08/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-001/"
-           data-tag="Java Struts2"
+           data-tag="Java,Struts2"
            data-author="" >
             <span class="post-title" title="【Struts2漏洞】S2-001">【Struts2漏洞】S2-001</span>
             <span class="post-date" title="2021-01-08 09:42:27">2021/01/08</span>
         </a>
         
-        <a  class="All Java "
+        <a  class="全部文章 Java "
            href="/2020/12/09/%E3%80%90Java%E7%9F%A5%E8%AF%86%E3%80%91Java-OGNL%E8%A1%A8%E8%BE%BE%E5%BC%8F/"
            data-tag="OGNL"
            data-author="" >
@@ -258,21 +262,23 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">Java Struts2</a>
+            <a class="color5">Java</a>
+            
+            <a class="color3">Struts2</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2021-01-08 10:27:48'>2021-01-08 09:42</time>
+            发布时间 : <time class="date" title='最后更新: 2021-01-08 10:39:40'>2021-01-08 09:42</time>
         
     </div>
     <div class="article-meta">
         
         
         <span id="busuanzi_container_page_pv">
-            Views 👀 :<span id="busuanzi_value_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
                 <span class="count-comment">
                     <span class="spinner">
                       <div class="cube1"></div>
@@ -303,7 +309,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><pre><code>影响版本：Struts 2.0.0 - 2.0.8</code></pre><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><pre><code>新建一个maven项目，在https://mvnrepository.com/搜索struts2，选一个漏洞版本添加进pom.xml</code></pre><p><img src="1.jpg" alt=""></p>
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><pre><code>影响版本：Struts 2.0.0 - 2.0.8</code></pre><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><pre><code>新建一个maven项目，在mvnrepository.com搜索struts2，选一个漏洞版本添加进pom.xml</code></pre><p><img src="1.jpg" alt=""></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 ponusjang@gmail.com </span>
@@ -313,14 +319,14 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">Title:</span>【Struts2漏洞】S2-001</p>
+    <p><span class="copy-title">文章标题:</span>【Struts2漏洞】S2-001</p>
     
-    <p><span class="copy-title">Author:</span><a  title="PonusJang">PonusJang</a></p>
-    <p><span class="copy-title">Created At:</span>2021-01-08, 09:42:27</p>
-    <p><span class="copy-title">Updated At:</span>2021-01-08, 10:27:48</p>
-    <span class="copy-title">Url:</span><a class="post-url" href="/2021/01/08/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-001/" title="【Struts2漏洞】S2-001">https://ponusjang.github.io/2021/01/08/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-001/</a>
+    <p><span class="copy-title">本文作者:</span><a  title="PonusJang">PonusJang</a></p>
+    <p><span class="copy-title">发布时间:</span>2021-01-08, 09:42:27</p>
+    <p><span class="copy-title">最后更新:</span>2021-01-08, 10:39:40</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/01/08/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-001/" title="【Struts2漏洞】S2-001">https://ponusjang.github.io/2021/01/08/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-001/</a>
     <p>
-        <span class="copy-title">Copyright:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">&#39;Attribution-non-commercial-shared in the same way 4.0&#39;</a> Reprint please keep the original link and author.
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
 </div>
 

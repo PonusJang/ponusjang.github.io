@@ -112,7 +112,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="All">All<small>(2)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(2)</small></div></li>
     
         
             
@@ -138,7 +138,7 @@
     
     
     </div>
-    <div><a class="about  site_url"  href="/about">About</a></div>
+    <div><a class="about  site_url"  href="/about">关于</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="2">
 
@@ -151,7 +151,7 @@
     <div class="nav-right">
         <div class="friends-area">
     <div class="friends-title">
-        Links
+        友情链接
         <i class="iconfont icon-left"></i>
     </div>
     <div class="friends-content">
@@ -166,7 +166,7 @@
     <div class="right-top">
         <div id="default-panel">
             <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
-            <div class="right-title">All</div>
+            <div class="right-title">全部文章</div>
             <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
         </div>
         <div id="search-panel">
@@ -187,11 +187,15 @@
     <div class="tag-wrapper">
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>Java Struts2</a>
+                <i class="iconfont icon-tag"></i><a>Java</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>OGNL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Struts2</a>
             </li>
         
     </div>
@@ -205,15 +209,15 @@
     
     <nav id="title-list-nav">
         
-        <a  class="All Vulnerability "
+        <a  class="全部文章 Vulnerability "
            href="/2021/01/08/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-001/"
-           data-tag="Java Struts2"
+           data-tag="Java,Struts2"
            data-author="" >
             <span class="post-title" title="【Struts2漏洞】S2-001">【Struts2漏洞】S2-001</span>
             <span class="post-date" title="2021-01-08 09:42:27">2021/01/08</span>
         </a>
         
-        <a  class="All Java "
+        <a  class="全部文章 Java "
            href="/2020/12/09/%E3%80%90Java%E7%9F%A5%E8%AF%86%E3%80%91Java-OGNL%E8%A1%A8%E8%BE%BE%E5%BC%8F/"
            data-tag="OGNL"
            data-author="" >
@@ -265,14 +269,14 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2021-01-08 09:54:27'>2020-12-09 09:29</time>
+            发布时间 : <time class="date" title='最后更新: 2021-01-08 10:37:00'>2020-12-09 09:29</time>
         
     </div>
     <div class="article-meta">
         
         
         <span id="busuanzi_container_page_pv">
-            Views 👀 :<span id="busuanzi_value_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
                 <span class="count-comment">
                     <span class="spinner">
                       <div class="cube1"></div>
@@ -307,11 +311,11 @@
 Struts2标签默认支持OGNL表达式。</code></pre><h3 id="OGNL三要素"><a href="#OGNL三要素" class="headerlink" title="OGNL三要素"></a>OGNL三要素</h3><pre><code>OGNL具有三要素:表达式(expression)、根对象(root)和上下文对象(context).
 * 表达式 --即表达式要执行的操作
 * 根对象 --即表达式操作的对象
-* 上下文对象 --即表达式运行的上下文环境</code></pre><h3 id="OGNL-in-Struts2"><a href="#OGNL-in-Struts2" class="headerlink" title="OGNL in Struts2"></a>OGNL in Struts2</h3><pre><code>在Struts2中,OGNL的上下文(context)即为Strut2的上下文(ActionContext),根元素(root)即为Struts2的值栈(ValueStack)
-![](/images/context.jpg)
-{% blockquote %}
-	Struts2的核心为Action,每一次HTTP请求，Struts2会生成一个ActionContext,并自动存储了一些在Action执行过程中所需的物件，比如session, parameters, locale等.
-	{% endblockquote %}</code></pre><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>* 1.访问常量: &quot;string&quot;,10.01B,100000H
+* 上下文对象 --即表达式运行的上下文环境</code></pre><h3 id="OGNL-in-Struts2"><a href="#OGNL-in-Struts2" class="headerlink" title="OGNL in Struts2"></a>OGNL in Struts2</h3><pre><code>在Struts2中,OGNL的上下文(context)即为Strut2的上下文(ActionContext),根元素(root)即为Struts2的值栈(ValueStack)</code></pre><p><img src="context.jpg" alt=""></p>
+<blockquote>
+<p>Struts2的核心为Action,每一次HTTP请求，Struts2会生成一个ActionContext,并自动存储了一些在Action执行过程中所需的物件，比如session, parameters, locale等.</p>
+</blockquote>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>* 1.访问常量: &quot;string&quot;,10.01B,100000H
 * 2.访问变量: #name
 * 3.访问实例属性: user.name
 * 4.调用静态变量: @class@field
@@ -336,14 +340,14 @@ Struts2标签默认支持OGNL表达式。</code></pre><h3 id="OGNL三要素"><a 
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">Title:</span>【Java】 OGNL表达式</p>
+    <p><span class="copy-title">文章标题:</span>【Java】 OGNL表达式</p>
     
-    <p><span class="copy-title">Author:</span><a  title="PonusJang">PonusJang</a></p>
-    <p><span class="copy-title">Created At:</span>2020-12-09, 09:29:46</p>
-    <p><span class="copy-title">Updated At:</span>2021-01-08, 09:54:27</p>
-    <span class="copy-title">Url:</span><a class="post-url" href="/2020/12/09/%E3%80%90Java%E7%9F%A5%E8%AF%86%E3%80%91Java-OGNL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="【Java】 OGNL表达式">https://ponusjang.github.io/2020/12/09/%E3%80%90Java%E7%9F%A5%E8%AF%86%E3%80%91Java-OGNL%E8%A1%A8%E8%BE%BE%E5%BC%8F/</a>
+    <p><span class="copy-title">本文作者:</span><a  title="PonusJang">PonusJang</a></p>
+    <p><span class="copy-title">发布时间:</span>2020-12-09, 09:29:46</p>
+    <p><span class="copy-title">最后更新:</span>2021-01-08, 10:37:00</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/12/09/%E3%80%90Java%E7%9F%A5%E8%AF%86%E3%80%91Java-OGNL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="【Java】 OGNL表达式">https://ponusjang.github.io/2020/12/09/%E3%80%90Java%E7%9F%A5%E8%AF%86%E3%80%91Java-OGNL%E8%A1%A8%E8%BE%BE%E5%BC%8F/</a>
     <p>
-        <span class="copy-title">Copyright:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">&#39;Attribution-non-commercial-shared in the same way 4.0&#39;</a> Reprint please keep the original link and author.
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
     </p>
 </div>
 
