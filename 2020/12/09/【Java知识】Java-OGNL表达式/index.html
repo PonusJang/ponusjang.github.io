@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>about | PonusJang&#39;Notes</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="about | PonusJang&#39;Notes">
+  <title>【Java】 OGNL表达式 | PonusJang&#39;Notes</title>
+  <meta name="keywords" content=" OGNL ">
+  <meta name="description" content="【Java】 OGNL表达式 | PonusJang&#39;Notes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -238,19 +238,34 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-【Java知识】Java-OGNL表达式" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">about</h1>
+        <h1 class="article-title">【Java】 OGNL表达式</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Java">Java</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">OGNL</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2020-07-10 09:42:24'>2020-07-10 09:42</time>
+            Created At : <time class="date" title='Updated At: 2021-01-08 09:54:27'>2020-12-09 09:29</time>
         
     </div>
     <div class="article-meta">
@@ -272,7 +287,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OGNL三要素"><span class="toc-text">OGNL三要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OGNL-in-Struts2"><span class="toc-text">OGNL in Struts2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关漏洞"><span class="toc-text">相关漏洞</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -288,13 +303,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><pre><code>OGNL,英文全拼Object-Graph Navigation Language(对象图导航语言).通过OGNL表达式可以简便存取Java对象树中的任意属性和调用Java对象树的方法等,因此通过OGNL表达式可以将Model的属性和View层做数据绑定.
+Struts2标签默认支持OGNL表达式。</code></pre><h3 id="OGNL三要素"><a href="#OGNL三要素" class="headerlink" title="OGNL三要素"></a>OGNL三要素</h3><pre><code>OGNL具有三要素:表达式(expression)、根对象(root)和上下文对象(context).
+* 表达式 --即表达式要执行的操作
+* 根对象 --即表达式操作的对象
+* 上下文对象 --即表达式运行的上下文环境</code></pre><h3 id="OGNL-in-Struts2"><a href="#OGNL-in-Struts2" class="headerlink" title="OGNL in Struts2"></a>OGNL in Struts2</h3><pre><code>在Struts2中,OGNL的上下文(context)即为Strut2的上下文(ActionContext),根元素(root)即为Struts2的值栈(ValueStack)
+![](/images/context.jpg)
+{% blockquote %}
+	Struts2的核心为Action,每一次HTTP请求，Struts2会生成一个ActionContext,并自动存储了一些在Action执行过程中所需的物件，比如session, parameters, locale等.
+	{% endblockquote %}</code></pre><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre><code>* 1.访问常量: &quot;string&quot;,10.01B,100000H
+* 2.访问变量: #name
+* 3.访问实例属性: user.name
+* 4.调用静态变量: @class@field
+* 5.调用静态方法: @class@method(args) 未指定class默认为java.lang.Math
+* 6.构造实例对象: new java.util.ArrayList()
+* 7.投影: userList.{username} 将集合中某相同属性提取
+* 8.选择: userList.{? #username != null}  conllection.{operate condition} 操作符支持?(所有)、$(第一个)、^(最后一个)
+* 9.#的用法: [1].访问非根对象,由于OGNL的root为ValueStack,访问其他对象就需要使用;[2].选择,见上面第8点;[3].用户构造Map,如#{&#39;foo1&#39;:&#39;bar1&#39;, &#39;foo2&#39;:&#39;bar2&#39;}
+* 10.$的用法: </code></pre><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code>在Struts2中获取Web路径：</code></pre><pre><code class="java">%{
+#req=@org.apache.struts2.ServletActionContext@getRequest(),
+#response=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;).getWriter(),
+#response.println(#req.getRealPath(&#39;/&#39;)),
+#response.flush(),
+#response.close()
+}</code></pre>
+<h3 id="相关漏洞"><a href="#相关漏洞" class="headerlink" title="相关漏洞"></a>相关漏洞</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 ponusjang@gmail.com </span>
     </div>
 </article>
 
 
+
+<div class="article_copyright">
+    <p><span class="copy-title">Title:</span>【Java】 OGNL表达式</p>
+    
+    <p><span class="copy-title">Author:</span><a  title="PonusJang">PonusJang</a></p>
+    <p><span class="copy-title">Created At:</span>2020-12-09, 09:29:46</p>
+    <p><span class="copy-title">Updated At:</span>2021-01-08, 09:54:27</p>
+    <span class="copy-title">Url:</span><a class="post-url" href="/2020/12/09/%E3%80%90Java%E7%9F%A5%E8%AF%86%E3%80%91Java-OGNL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="【Java】 OGNL表达式">https://ponusjang.github.io/2020/12/09/%E3%80%90Java%E7%9F%A5%E8%AF%86%E3%80%91Java-OGNL%E8%A1%A8%E8%BE%BE%E5%BC%8F/</a>
+    <p>
+        <span class="copy-title">Copyright:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">&#39;Attribution-non-commercial-shared in the same way 4.0&#39;</a> Reprint please keep the original link and author.
+    </p>
+</div>
 
 
 
