@@ -8,7 +8,7 @@
       <link href="/2021/01/08/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-001/"/>
       <url>/2021/01/08/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-001/</url>
       
-        <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><pre><code>影响版本：Struts 2.0.0 - 2.0.8</code></pre><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><pre><code>新建一个maven项目，在mvnrepository.com搜索struts2，选一个漏洞版本添加进pom.xml</code></pre><p><img src="1.jpg" alt=""></p>]]></content>
+        <content type="html"><![CDATA[<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><pre><code>影响版本：Struts 2.0.0 - 2.0.8官方通告 https://cwiki.apache.org/confluence/display/WW/S2-001</code></pre><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><pre><code>    新建一个Java项目，目录文件如图：</code></pre><p><img src="1.jpg" alt=""></p><h3 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h3><pre><code>大致上就是Struts2在渲染解析页面的时候，将值进行了OGNL递归处理造成了命令执行的问题。从调试的堆栈中可以发现，从UIBean类的evaluateParams()进入调用Component类addParameter()再调findValue()，最后再调用TextParseUtil类的translateVariables()。因为Struts2在页面使用%{}渲染，所以translateVariables会处理%{}的表达式，然后这边就会调用了ValueStack类的findValue()解析了表达式</code></pre><p><img src="2.jpg" alt=""></p><h3 id="修复分析"><a href="#修复分析" class="headerlink" title="修复分析"></a>修复分析</h3><pre><code>在xwork 2.0.4版本中，增加一个循环限制的参数和判断</code></pre><p><img src="3.jpg" alt=""></p>]]></content>
       
       
       <categories>
