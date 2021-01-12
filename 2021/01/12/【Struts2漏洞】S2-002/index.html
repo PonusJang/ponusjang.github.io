@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>【Struts2漏洞】S2-001 | PonusJang&#39;Notes</title>
-  <meta name="keywords" content=" Java , Struts2 ">
-  <meta name="description" content="【Struts2漏洞】S2-001 | PonusJang&#39;Notes">
+  <title>【Struts2漏洞】S2-002 | PonusJang&#39;Notes</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="【Struts2漏洞】S2-002 | PonusJang&#39;Notes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -249,36 +249,19 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-【Struts2漏洞】S2-001" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-【Struts2漏洞】S2-002" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">【Struts2漏洞】S2-001</h1>
+        <h1 class="article-title">【Struts2漏洞】S2-002</h1>
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="Vulnerability">Vulnerability</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color5">Java</a>
-            
-            <a class="color3">Struts2</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2021-01-12 17:26:01'>2021-01-08 09:42</time>
+            Created At : <time class="date" title='Updated At: 2021-01-12 17:12:39'>2021-01-12 17:12</time>
         
     </div>
     <div class="article-meta">
@@ -300,7 +283,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#环境搭建"><span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞分析"><span class="toc-text">漏洞分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修复分析"><span class="toc-text">修复分析</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -316,14 +299,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><pre><code>影响版本：Struts 2.0.0 - 2.0.8
-官方通告 https://cwiki.apache.org/confluence/display/WW/S2-001</code></pre><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><pre><code>    新建一个Java项目，目录文件如图：</code></pre><p><img src="1.jpg" alt=""></p>
-<h3 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h3><pre><code>大致上就是Struts2在渲染解析页面的时候，将值进行了OGNL递归处理造成了命令执行的问题。
-从调试的堆栈中可以发现，从UIBean类的evaluateParams()进入调用Component类addParameter()再调findValue()，最后再调用TextParseUtil类的translateVariables()。
-
-因为Struts2在页面使用%{}渲染，所以translateVariables会处理%{}的表达式，然后这边递归就会调用了ValueStack类的findValue()解析了表达式</code></pre><p><img src="2.jpg" alt=""></p>
-<h3 id="修复分析"><a href="#修复分析" class="headerlink" title="修复分析"></a>修复分析</h3><pre><code>在xwork 2.0.4版本中，增加一个循环限制的参数和判断</code></pre><p><img src="3.jpg" alt=""></p>
-
+        
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 ponusjang@gmail.com </span>
     </div>
@@ -332,12 +308,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">Title:</span>【Struts2漏洞】S2-001</p>
+    <p><span class="copy-title">Title:</span>【Struts2漏洞】S2-002</p>
     
     <p><span class="copy-title">Author:</span><a  title="PonusJang">PonusJang</a></p>
-    <p><span class="copy-title">Created At:</span>2021-01-08, 09:42:27</p>
-    <p><span class="copy-title">Updated At:</span>2021-01-12, 17:26:01</p>
-    <span class="copy-title">Url:</span><a class="post-url" href="/2021/01/08/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-001/" title="【Struts2漏洞】S2-001">https://ponusjang.github.io/2021/01/08/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-001/</a>
+    <p><span class="copy-title">Created At:</span>2021-01-12, 17:12:39</p>
+    <p><span class="copy-title">Updated At:</span>2021-01-12, 17:12:39</p>
+    <span class="copy-title">Url:</span><a class="post-url" href="/2021/01/12/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-002/" title="【Struts2漏洞】S2-002">https://ponusjang.github.io/2021/01/12/%E3%80%90Struts2%E6%BC%8F%E6%B4%9E%E3%80%91S2-002/</a>
     <p>
         <span class="copy-title">Copyright:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">&#39;Attribution-non-commercial-shared in the same way 4.0&#39;</a> Reprint please keep the original link and author.
     </p>
